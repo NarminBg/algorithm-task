@@ -6,26 +6,34 @@
         {
             Console.WriteLine("Eded:");
             int number = Convert.ToInt32(Console.ReadLine());
-            int[] digits = new int[10];
-            bool muxtelifreqemli = true;
+            int r1, r2;
+            int tmp;
+            bool isDifferenceDigit = true;
             while (number > 0)
             {
 
-                int digit = number % 10;
-                if (digits[digit] == 1)
-                {
-                    muxtelifreqemli = false;
-                    break;
-                }
-                digits[digit] = 1;
+                r1 = number % 10;
                 number /= 10;
+                tmp = number;
+                while (tmp != 0)
+                {
+                    r2 = tmp % 10;
+                    tmp /= 10;
 
-            }
+                    if (r1 == r2)
+                    {
+                        Console.WriteLine("Muxtelifreqemli deyil");
+                        isDifferenceDigit = false;
+                        break;
+                    }
 
-            if (muxtelifreqemli == true)
-            {
-                Console.WriteLine("muxtelifreqemli");
+                }
+                if (!isDifferenceDigit)
+                    break;
             }
+            Console.WriteLine("Muxtelif reqemlidir");
         }
     }
-}
+    
+   
+    }
